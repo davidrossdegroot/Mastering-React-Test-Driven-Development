@@ -4,12 +4,20 @@ interface Customer {
     firstName: string
 }
 
-interface Props {
+interface AppointmentProps {
     customer: Customer
 }
 
-const Appointment: React.FC<Props> = (props: Props) => {
+interface AppointmentDayViewProps {
+    appointments: []
+}
+
+export const Appointment: React.FC<AppointmentProps> = (props: AppointmentProps) => {
     return <div>{props.customer.firstName}</div>
+}
+
+export const AppointmentsDayView: React.FC<any> = ({ appointments: any }) => {
+    return null
 }
 
 export default Appointment
