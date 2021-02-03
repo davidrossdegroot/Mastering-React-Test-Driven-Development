@@ -11,7 +11,7 @@
         "noEmit": true,
         "pretty": true,
         "skipLibCheck": true,
-        "strict": true,
+        "strict": false,
         "moduleResolution": "node",
         "esModuleInterop": true
     },
