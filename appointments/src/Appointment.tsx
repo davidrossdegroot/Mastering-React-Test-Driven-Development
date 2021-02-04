@@ -1,23 +1,46 @@
-import React from 'react'
+import React from 'react';
 
 interface Customer {
-    firstName: string
+  firstName: string;
 }
 
-interface AppointmentProps {
-    customer: Customer
+interface AppointmentIProps {
+  customer?: Customer;
+  startsAt?: number;
 }
 
-interface AppointmentDayViewProps {
-    appointments: []
+interface AppointmentDayViewIProps {
+  appointments: AppointmentIProps[];
 }
 
-export const Appointment: React.FC<AppointmentProps> = (props: AppointmentProps) => {
-    return <div>{props.customer.firstName}</div>
-}
+export const Appointment: React.FC<AppointmentIProps> = (
+  props: AppointmentIProps
+) => {
+  return <div>{props.customer.firstName}</div>;
+};
 
-export const AppointmentsDayView: React.FC<any> = ({ appointments: any }) => {
-    return null
-}
+const appointmentTimeOfDay = (startsAt) => {
+  const [h, m] = new Date(startsAt).toTimeString().split(':');
+  return `${h}:${m}`;
+};
 
-export default Appointment
+export const AppointmentsDayView: React.FC<AppointmentDayViewIProps> = (
+  props: AppointmentDayViewIProps
+) => {
+  const { appointments } = props;
+  return (
+    <div id="appointmentsDayView">
+      <ol>
+        {appointments.map((appointment) => {
+          return (
+            <li key={appointment.startsAt}>
+              {appointmentTimeOfDay(appointment.startsAt)}
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+};
+
+export default Appointment;
