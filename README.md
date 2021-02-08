@@ -1,3 +1,5 @@
+# checkout the appointments readme for more info about that project.
+
 # Mastering React Test-Driven Development
 Published by Packt
 

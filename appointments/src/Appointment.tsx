@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface Customer {
   firstName: string;
@@ -27,18 +27,32 @@ const appointmentTimeOfDay = (startsAt) => {
 export const AppointmentsDayView: React.FC<AppointmentDayViewIProps> = (
   props: AppointmentDayViewIProps
 ) => {
+  const [
+    selectedAppointment,
+    setSelectedAppointment,
+  ] = useState<number>(0);
   const { appointments } = props;
   return (
     <div id="appointmentsDayView">
       <ol>
-        {appointments.map((appointment) => {
+        {appointments.map((appointment, index) => {
           return (
             <li key={appointment.startsAt}>
               {appointmentTimeOfDay(appointment.startsAt)}
+              <button
+                onClick={() => setSelectedAppointment(index)}
+                type="button">
+                {appointmentTimeOfDay(appointment.startsAt)}
+              </button>
             </li>
           );
         })}
       </ol>
+      {appointments.length === 0 ? (
+        <p>There are no appointments scheduled for today.</p>
+      ) : (
+        <Appointment {...appointments[selectedAppointment]} />
+      )}
     </div>
   );
 };
