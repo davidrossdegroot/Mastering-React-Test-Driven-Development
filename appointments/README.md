@@ -1,11 +1,20 @@
-# start the app
+# Installation
 
 ```
 nvm use v14.15.0
 ```
 
-make sure you're in the `appointments` directory. run
+When you're in the main directory, you can install husky by running (I think)
+```
+npm install
+```
 
+Then navigate to this directory (appointments)
+
+```
+cd appointments
+```
+Then build the source code:
 ```
 npm run build
 ```
