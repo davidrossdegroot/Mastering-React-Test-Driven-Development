@@ -9,7 +9,7 @@ export const sampleAppointments = [
   { startsAt: at(10), customer: { firstName: 'Frankie' } },
   { startsAt: at(11), customer: { firstName: 'Casey' } },
   { startsAt: at(12), customer: { firstName: 'Ashley' } },
-  { startsAt: at(12), customer: { firstName: 'Jordan' } },
+  { startsAt: at(13), customer: { firstName: 'Jordan' } },
   { startsAt: at(14), customer: { firstName: 'Jay' } },
   { startsAt: at(15), customer: { firstName: 'Alex' } },
   { startsAt: at(16), customer: { firstName: 'Jules' } },
