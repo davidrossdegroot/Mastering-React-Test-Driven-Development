@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config ./jest.config.js",
+    "test-watch": "jest --watchAll --config ./jest.config.js",
     "build": "webpack"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.0",
     "babel-loader": "^8.2.2",
+    "fsevents": "^2.3.2",
     "jest": "^24.1.0",
     "ts-jest": "^26.5.0",
     "ts-loader": "^8.0.17",

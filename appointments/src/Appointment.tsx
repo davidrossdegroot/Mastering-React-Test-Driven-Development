@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export interface ICustomer {
   firstName?: string;
+  lastName?: string
 }
 
 interface AppointmentIProps {

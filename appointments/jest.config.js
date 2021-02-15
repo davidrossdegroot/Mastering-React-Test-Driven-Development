@@ -8,5 +8,6 @@ module.exports = {
   collectCoverage: true,
   clearMocks: true,
   coverageDirectory: 'coverage',
+  watchPathIgnorePatterns: ["<rootDir>/node_modules/"],
   preset: 'ts-jest'
 };

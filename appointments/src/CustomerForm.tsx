@@ -13,7 +13,18 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
   const [customer, setCustomer] = useState<ICustomer>(
     customerProps
   );
-  const firstName = customer ? customer.firstName : "";
+  let firstName, lastName
+  if(customer) {
+    firstName = customer.firstName
+    lastName = customer.lastName
+  }
+
+  const handleChangeFirstName = ({target}) => {
+    setCustomer({ ...customer, firstName: target.value })
+  }
+  const handleChangeLastName = ({target}) => {
+    setCustomer({ ...customer, lastName: target.value })
+  }
   return (
     <form id="customer" onSubmit={() => onSubmit(customer)}>
       <label htmlFor="firstName">First Name</label>
@@ -22,9 +33,16 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         name="firstName"
         id="firstName"
         value={firstName}
-        onChange={(e) =>
-          setCustomer({ ...{ firstName: e.target.value } })
-        }
+        onChange={handleChangeFirstName}        
+        readOnly
+      />
+      <label htmlFor="lastName">Last Name</label>
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        value={lastName}
+        onChange={handleChangeLastName}        
         readOnly
       />
     </form>
