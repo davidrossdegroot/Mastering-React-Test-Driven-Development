@@ -3,7 +3,7 @@ import { createContainer } from '../domManipulators';
 import { CustomerForm } from '../../src/components/CustomerForm';
 import { expectToBeInputFieldOfTypeText } from '../specHelper';
 import ReactTestUtils from 'react-dom/test-utils';
-import { ICustomer } from '../../src/components/AppointmentsDayView';
+import { ICustomer } from '../../src/interfaces/Customer';
 
 describe('CustomerForm', () => {
   let render: (component: ReactElement) => void,
@@ -34,7 +34,10 @@ describe('CustomerForm', () => {
       expectToBeInputFieldOfTypeText(field(fieldName));
     });
   };
-  const itIncludesTheExistingValue = (fieldName: string, customer: ICustomer) => {
+  const itIncludesTheExistingValue = (
+    fieldName: string,
+    customer: ICustomer
+  ) => {
     it('includes the existing value', () => {
       render(<CustomerForm customerProps={customer} />);
 
@@ -88,13 +91,15 @@ describe('CustomerForm', () => {
     newCustomer: ICustomer
   ) => {
     it('saves when submitted', async () => {
-      const fieldName: string = Object.keys(initialCustomer)[0]
+      const fieldName: string = Object.keys(initialCustomer)[0];
       expect.hasAssertions();
       render(
         <CustomerForm
           customerProps={initialCustomer}
           onSubmit={(customer) => {
-            expect(customer[fieldName]).toEqual(newCustomer[fieldName]);
+            expect(customer[fieldName]).toEqual(
+              newCustomer[fieldName]
+            );
           }}
         />
       );
@@ -110,7 +115,9 @@ describe('CustomerForm', () => {
   describe('first name field', () => {
     itRendersAsATextBox('firstName');
 
-    itIncludesTheExistingValue('firstName', { firstName: 'Ashley' });
+    itIncludesTheExistingValue('firstName', {
+      firstName: 'Ashley',
+    });
 
     itRendersALabel('firstName', 'First Name');
 
@@ -118,29 +125,35 @@ describe('CustomerForm', () => {
 
     itSavesExistingValueWhenSubmitted({ firstName: 'Ashley' });
 
-    itSavesWhenSubmitted({ firstName: 'Ashley' }, { firstName: 'Jamie'} );
+    itSavesWhenSubmitted(
+      { firstName: 'Ashley' },
+      { firstName: 'Jamie' }
+    );
   });
 
   describe('last name field', () => {
+    itRendersAsATextBox('lastName');
 
-      itRendersAsATextBox('lastName');
+    itIncludesTheExistingValue('lastName', { lastName: 'Ashley' });
 
-      itIncludesTheExistingValue('lastName', { lastName: 'Ashley' });
-  
-      itRendersALabel('lastName', 'Last Name');
-  
-      itAssignsAnIdThatMatchesTheLabel('lastName');
-  
-      itSavesExistingValueWhenSubmitted({ lastName: 'Ashley' });
-  
-      itSavesWhenSubmitted({ lastName: 'Ashley' }, { lastName: 'Jamie'} );
+    itRendersALabel('lastName', 'Last Name');
+
+    itAssignsAnIdThatMatchesTheLabel('lastName');
+
+    itSavesExistingValueWhenSubmitted({ lastName: 'Ashley' });
+
+    itSavesWhenSubmitted(
+      { lastName: 'Ashley' },
+      { lastName: 'Jamie' }
+    );
   });
 
   describe('phone number field', () => {
-
     itRendersAsATextBox('phoneNumber');
 
-    itIncludesTheExistingValue('phoneNumber', { phoneNumber: 'Ashley' });
+    itIncludesTheExistingValue('phoneNumber', {
+      phoneNumber: 'Ashley',
+    });
 
     itRendersALabel('phoneNumber', 'Phone Number');
 
@@ -148,6 +161,9 @@ describe('CustomerForm', () => {
 
     itSavesExistingValueWhenSubmitted({ phoneNumber: 'Ashley' });
 
-    itSavesWhenSubmitted({ phoneNumber: 'Ashley' }, { phoneNumber: 'Jamie'} );
-});
+    itSavesWhenSubmitted(
+      { phoneNumber: 'Ashley' },
+      { phoneNumber: 'Jamie' }
+    );
+  });
 });

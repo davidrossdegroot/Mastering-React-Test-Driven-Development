@@ -1,12 +1,13 @@
-import { ReactElement } from 'react'
-import ReactDOM from 'react-dom'
+import { ReactElement } from 'react';
+import ReactDOM from 'react-dom';
 
 export const createContainer = () => {
-    const container = document.createElement('div')
+  const container = document.createElement('div');
 
-    return {
-        render: (component: ReactElement) => {
-            ReactDOM.render(component, container)
-        }, container
-    }
-}
+  return {
+    render: (component: ReactElement) => {
+      ReactDOM.render(component, container);
+    },
+    container,
+  };
+};

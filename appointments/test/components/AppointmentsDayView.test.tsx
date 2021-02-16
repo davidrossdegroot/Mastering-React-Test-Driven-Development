@@ -4,12 +4,13 @@ import {
 } from '../../src/components/AppointmentsDayView';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils'; 
+import ReactTestUtils from 'react-dom/test-utils';
 
 describe('Appointment', () => {
   let customer;
   const container = document.createElement('div');
   const render = (component) =>
+    // eslint-disable-next-line react/no-render-return-value
     ReactDOM.render(component, container);
   it('renders the customer first name', () => {
     const firstName = 'Ashley';
@@ -89,14 +90,20 @@ describe('AppointmentsDayView', () => {
 
   it('has a button element in each li', () => {
     render(<AppointmentsDayView appointments={appointments} />);
-    expect(container.querySelectorAll('li > button')).toHaveLength(2)
-    expect(container.querySelectorAll('li > button')[0].getAttribute('type')).toEqual('button')
-  })
+    expect(container.querySelectorAll('li > button')).toHaveLength(
+      2
+    );
+    expect(
+      container
+        .querySelectorAll('li > button')[0]
+        .getAttribute('type')
+    ).toEqual('button');
+  });
 
   it('renders another appointment when selected', () => {
     render(<AppointmentsDayView appointments={appointments} />);
-    const button = container.querySelectorAll('button')[1]
-    ReactTestUtils.Simulate.click(button)
-    expect(container.textContent).toMatch('Jordan')
-  })
+    const button = container.querySelectorAll('button')[1];
+    ReactTestUtils.Simulate.click(button);
+    expect(container.textContent).toMatch('Jordan');
+  });
 });
