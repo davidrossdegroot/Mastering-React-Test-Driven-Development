@@ -106,6 +106,7 @@ describe('CustomerForm', () => {
       await ReactTestUtils.Simulate.submit(form('customer'));
     });
   };
+
   describe('first name field', () => {
     itRendersAsATextBox('firstName');
 
@@ -134,4 +135,19 @@ describe('CustomerForm', () => {
   
       itSavesWhenSubmitted({ lastName: 'Ashley' }, { lastName: 'Jamie'} );
   });
+
+  describe('phone number field', () => {
+
+    itRendersAsATextBox('phoneNumber');
+
+    itIncludesTheExistingValue('phoneNumber', { phoneNumber: 'Ashley' });
+
+    itRendersALabel('phoneNumber', 'Phone Number');
+
+    itAssignsAnIdThatMatchesTheLabel('phoneNumber');
+
+    itSavesExistingValueWhenSubmitted({ phoneNumber: 'Ashley' });
+
+    itSavesWhenSubmitted({ phoneNumber: 'Ashley' }, { phoneNumber: 'Jamie'} );
+});
 });
