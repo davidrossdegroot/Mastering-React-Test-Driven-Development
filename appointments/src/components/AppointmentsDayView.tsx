@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-
-export interface ICustomer {
-  firstName?: string;
-  lastName?: string
-  phoneNumber?: string
-}
+import { ICustomer } from '../interfaces/Customer';
 
 interface AppointmentIProps {
   customer?: ICustomer;

@@ -1,7 +1,7 @@
 import {
   Appointment,
   AppointmentsDayView,
-} from '../src/Appointment';
+} from '../../src/components/AppointmentsDayView';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils'; 

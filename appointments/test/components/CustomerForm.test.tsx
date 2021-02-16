@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import { createContainer } from './domManipulators';
-import { CustomerForm } from '../src/CustomerForm';
-import { expectToBeInputFieldOfTypeText } from './specHelper';
+import { createContainer } from '../domManipulators';
+import { CustomerForm } from '../../src/components/CustomerForm';
+import { expectToBeInputFieldOfTypeText } from '../specHelper';
 import ReactTestUtils from 'react-dom/test-utils';
-import { ICustomer } from '../src/Appointment';
+import { ICustomer } from '../../src/components/AppointmentsDayView';
 
 describe('CustomerForm', () => {
   let render: (component: ReactElement) => void,

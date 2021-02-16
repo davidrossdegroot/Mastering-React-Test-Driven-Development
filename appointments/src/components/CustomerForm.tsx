@@ -1,15 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
-import { ICustomer } from './Appointment';
+import { Customer, ICustomer } from '../interfaces/Customer';
 
 interface CustomerFormProps {
   customerProps?: ICustomer;
   onSubmit?: (customer: ICustomer) => void;
-}
-
-class Customer implements ICustomer {
-  firstName?: string;
-  lastName?: string;
-  phoneNumber?: string;
 }
 
 export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
@@ -17,12 +11,8 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
   onSubmit,
 }) => {
   const [customer, setCustomer] = useState<ICustomer>(
-    customerProps
+    new Customer(customerProps)
   );
-  let customerClone = new Customer();
-  if (customer) {
-    customerClone = customer;
-  }
 
   const handleChangeFirstName = ({ target }) => {
     setCustomer({ ...customer, firstName: target.value });
@@ -40,7 +30,7 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         type="text"
         name="firstName"
         id="firstName"
-        value={customerClone.firstName}
+        value={customer.firstName}
         onChange={handleChangeFirstName}
         readOnly
       />
@@ -49,7 +39,7 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         type="text"
         name="lastName"
         id="lastName"
-        value={customerClone.lastName}
+        value={customer.lastName}
         onChange={handleChangeLastName}
         readOnly
       />
@@ -58,7 +48,7 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         type="text"
         name="phoneNumber"
         id="phoneNumber"
-        value={customerClone.phoneNumber}
+        value={customer.phoneNumber}
         onChange={handleChangePhoneNumber}
         readOnly
       />
