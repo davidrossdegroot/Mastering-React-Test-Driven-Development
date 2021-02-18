@@ -22,6 +22,14 @@ describe('CustomerForm', () => {
     expect(form('customer')).not.toBeNull();
   });
 
+  it('renders a submit button', () => {
+    render(<CustomerForm />);
+    const submitButton = container.querySelector(
+      'input[type="submit"]'
+    );
+    expect(submitButton).not.toBeNull();
+  });
+
   const field = (fieldName: string) =>
     form('customer').elements.namedItem(
       fieldName
@@ -106,6 +114,7 @@ describe('CustomerForm', () => {
       await ReactTestUtils.Simulate.change(field(fieldName), {
         target: {
           value: newCustomer[fieldName],
+          name: fieldName,
         } as HTMLInputElement,
       });
       await ReactTestUtils.Simulate.submit(form('customer'));

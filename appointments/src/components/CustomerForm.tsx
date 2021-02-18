@@ -14,14 +14,8 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
     new Customer(customerProps)
   );
 
-  const handleChangeFirstName = ({ target }) => {
-    setCustomer({ ...customer, firstName: target.value });
-  };
-  const handleChangeLastName = ({ target }) => {
-    setCustomer({ ...customer, lastName: target.value });
-  };
-  const handleChangePhoneNumber = ({ target }) => {
-    setCustomer({ ...customer, phoneNumber: target.value });
+  const handleChange = (target: HTMLInputElement) => {
+    setCustomer({ ...customer, [target.name]: target.value });
   };
   return (
     <form id="customer" onSubmit={() => onSubmit(customer)}>
@@ -31,8 +25,9 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         name="firstName"
         id="firstName"
         value={customer.firstName}
-        onChange={handleChangeFirstName}
-        readOnly
+        onChange={(e) =>
+          handleChange(e.target as HTMLInputElement)
+        }
       />
       <label htmlFor="lastName">Last Name</label>
       <input
@@ -40,8 +35,9 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         name="lastName"
         id="lastName"
         value={customer.lastName}
-        onChange={handleChangeLastName}
-        readOnly
+        onChange={(e) =>
+          handleChange(e.target as HTMLInputElement)
+        }
       />
       <label htmlFor="phoneNumber">Phone Number</label>
       <input
@@ -49,9 +45,11 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
         name="phoneNumber"
         id="phoneNumber"
         value={customer.phoneNumber}
-        onChange={handleChangePhoneNumber}
-        readOnly
+        onChange={(e) =>
+          handleChange(e.target as HTMLInputElement)
+        }
       />
+      <input type="submit" value="Add" />
     </form>
   );
 };
