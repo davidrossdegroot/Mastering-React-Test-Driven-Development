@@ -19,37 +19,50 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
   };
   return (
     <form id="customer" onSubmit={() => onSubmit(customer)}>
-      <label htmlFor="firstName">First Name</label>
-      <input
-        type="text"
-        name="firstName"
-        id="firstName"
-        value={customer.firstName}
-        onChange={(e) =>
-          handleChange(e.target as HTMLInputElement)
-        }
-      />
-      <label htmlFor="lastName">Last Name</label>
-      <input
-        type="text"
-        name="lastName"
-        id="lastName"
-        value={customer.lastName}
-        onChange={(e) =>
-          handleChange(e.target as HTMLInputElement)
-        }
-      />
-      <label htmlFor="phoneNumber">Phone Number</label>
-      <input
-        type="text"
-        name="phoneNumber"
-        id="phoneNumber"
-        value={customer.phoneNumber}
-        onChange={(e) =>
-          handleChange(e.target as HTMLInputElement)
-        }
-      />
-      <input type="submit" value="Add" />
+      <div className="flex items-baseline mt-4 mb-6">
+        <div className="space-x-2 flex">
+          <div className="flex flex-wrap">
+            <h1 className="flex-auto text-xl font-semibold">
+              Customer Form
+            </h1>
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              value={customer.firstName}
+              onChange={(e) =>
+                handleChange(e.target as HTMLInputElement)
+              }
+            />
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              value={customer.lastName}
+              onChange={(e) =>
+                handleChange(e.target as HTMLInputElement)
+              }
+            />
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              type="text"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={customer.phoneNumber}
+              onChange={(e) =>
+                handleChange(e.target as HTMLInputElement)
+              }
+            />
+            <input
+              className="w-1/2 flex items-center justify-center rounded-md bg-black text-white"
+              type="submit"
+              value="Add"
+            />
+          </div>
+        </div>
+      </div>
     </form>
   );
 };
