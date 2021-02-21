@@ -56,7 +56,7 @@ export const CustomerForm: FunctionComponent<CustomerFormProps> = ({
               }
             />
             <input
-              className="w-1/2 flex items-center justify-center rounded-md bg-black text-white"
+              className="w-1/4 flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-700 text-white"
               type="submit"
               value="Add"
             />
