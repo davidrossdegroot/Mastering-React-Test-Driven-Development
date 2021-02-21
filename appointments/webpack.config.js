@@ -33,7 +33,9 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     hot: true,
-    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: path.resolve(__dirname, '/dist/'),
+    // contentBase: path.resolve(__dirname, './dist'),
     watchContentBase: true,
   },
+  target: 'web',
 };
