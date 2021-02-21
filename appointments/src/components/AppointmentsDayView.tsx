@@ -13,7 +13,11 @@ interface AppointmentDayViewIProps {
 export const Appointment: React.FC<AppointmentIProps> = (
   props: AppointmentIProps
 ) => {
-  return <div>{props.customer.firstName}</div>;
+  return (
+    <div className="dark:text-gray-100">
+      {props.customer.firstName}
+    </div>
+  );
 };
 
 const appointmentTimeOfDay = (startsAt) => {
@@ -36,11 +40,11 @@ export const AppointmentsDayView: React.FC<AppointmentDayViewIProps> = (
           {appointments.map((appointment, index) => {
             return (
               <li
-                className="ml-4 flex items-center"
+                className="ml-4 flex items-center dark:text-gray-50"
                 key={appointment.startsAt}>
                 {appointmentTimeOfDay(appointment.startsAt)}
                 <button
-                  className="m-3 rounded-md bg-blue-100 text-blue-600 text-sm font-medium px-4 py-2 hover:bg-blue-200"
+                  className="m-3 rounded-md  dark:text-gray-600 dark:hover:text-blue-800 dark:hover:bg-gray-100 bg-blue-100 text-blue-600 text-sm font-medium px-4 py-2 hover:bg-blue-200"
                   onClick={() => setSelectedAppointment(index)}
                   type="button">
                   {appointmentTimeOfDay(appointment.startsAt)}
