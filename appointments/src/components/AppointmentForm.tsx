@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { ReactHTMLElement } from 'react';
 
-interface Props {
-  props: any;
+interface AppointmentFormProps {
+  selectableServices?: string[];
 }
 
-export const AppointmentForm = (props: Props) => {
+export const AppointmentForm: React.FC<AppointmentFormProps> = (
+  props: AppointmentFormProps
+) => {
   return (
-    <form id="appointment">
-      <select name="service" id=""></select>
-    </form>
+    <div className="pt-9 mx-auto container text-lg">
+      <form className="m-6 flex justify-center" id="appointment">
+        <select name="service" id="">
+          {props.selectableServices.map((s) => (
+            <option key={s}>{s}</option>
+          ))}
+        </select>
+      </form>
+    </div>
   );
+};
+
+AppointmentForm.defaultProps = {
+  selectableServices: [
+    '',
+    'Cut',
+    'Blow-Dry',
+    'Beard Trim',
+    'Cut & Color',
+    'Extensions',
+  ],
 };

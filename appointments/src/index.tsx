@@ -4,7 +4,12 @@ import { AppointmentsDayView } from './components/AppointmentsDayView';
 import { sampleAppointments } from './sampleData';
 import { CustomerForm } from './components/CustomerForm';
 import 'tailwindcss/tailwind.css';
+import { AppointmentForm } from './components/AppointmentForm';
 
+ReactDOM.render(
+  <AppointmentForm />,
+  document.getElementById('appointmentForm')
+);
 ReactDOM.render(
   <AppointmentsDayView appointments={sampleAppointments} />,
   document.getElementById('appointments')
